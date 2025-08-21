@@ -11,6 +11,7 @@ provide_target(::Val{:iid_normal_1000}) = Pigeons.toy_mvn_target(1000)
 
 include("$(dirname(dirname(Base.pathof(Pigeons))))/examples/ising.jl")
 Pigeons.extract_sample(state::IsingState, log_potential) = copy(vec(state.matrix))
+Pigeons.sample_names(state::IsingState, _) = map(string, 1:length(state.matrix))
 provide_target(::Val{:ising}) = IsingLogPotential()
 
 end
